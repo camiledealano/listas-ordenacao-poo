@@ -1,18 +1,27 @@
 package array;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.Collections;
 import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import java.awt.Font;
 
-import array.classes.IOrdenacao;
+import utils.IMetodosOrdenacao;
 
-public class TelaArray extends JFrame implements IOrdenacao {
-    
+
+public class TelaArray extends JFrame implements IMetodosOrdenacao {
+
+    private Font font = new Font(Font.SANS_SERIF, Font.BOLD, 13);
+    private Color background = new Color(242, 242, 242);
+    private Color foreground = new Color(111, 20, 149);
+
     private JTextArea textArea;
     private JButton btnAZ;
     private JButton btnZA;
@@ -34,14 +43,25 @@ public class TelaArray extends JFrame implements IOrdenacao {
     }
 
     private void criarComponentes() {
-        // labelzinho separe os nomes por enter
+        JLabel labelAviso = new JLabel();
+        labelAviso.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+        labelAviso.setText("Dica: Separe as palavras por vírgula!");
+        labelAviso.setBounds(10, 10, 300, 15);
+        getContentPane().add(labelAviso);
+
         textArea = new JTextArea();
-        textArea.setBounds(10, 10, 350, 440);
+        textArea.setBounds(10, 30, 350, 440);
+        textArea.setBorder(BorderFactory.createTitledBorder("Digite aqui"));
         getContentPane().add(textArea);
 
         acoesBotoes();
 
         btnAZ.setBounds(400, 10, 250, 30);
+        btnAZ.setFont(font);
+        btnAZ.setText("Ordenar A-Z");
+        btnAZ.setBackground(background);
+        btnAZ.setForeground(foreground);      
+        btnAZ.setBorder(BorderFactory.createLineBorder(foreground, 2));
         getContentPane().add(btnAZ);
 
         btnZA.setBounds(400, 50, 250, 30);
@@ -71,19 +91,19 @@ public class TelaArray extends JFrame implements IOrdenacao {
     }
 
     private void acoesBotoes() {
-
-        btnAZ = new JButton(new AbstractAction("Ordenar de A-Z") {
+        btnAZ = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //ok
-                ArrayList<String> nomesOrdenados = IOrdenacao.ordenaAZ(pegarListaNomes());
-                textArea.setText(String.join(",", nomesOrdenados));
+                ArrayList<String> nomesOrdenadosAZ = ordenaAZ(getListaNomes());
+                textArea.setText(String.join(",", nomesOrdenadosAZ));
             }
         });
 
         btnZA = new JButton(new AbstractAction("Ordenar de Z-A") {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ArrayList<String> nomesOrdenadosZA = ordenaZA(getListaNomes());
+                textArea.setText(String.join(",", nomesOrdenadosZA));
             
             }
         });
@@ -91,7 +111,8 @@ public class TelaArray extends JFrame implements IOrdenacao {
         btnInverter = new JButton(new AbstractAction("Inverter") {
             @Override
             public void actionPerformed(ActionEvent e) {
-            
+                ArrayList<String> nomesInvertidos = inverter(getListaNomes());
+                textArea.setText(String.join(",", nomesInvertidos));
             }
         });
 
@@ -142,7 +163,26 @@ public class TelaArray extends JFrame implements IOrdenacao {
         });
     }
 
-    private ArrayList<String> pegarListaNomes() {
+    private ArrayList<String> getListaNomes() {
         return new ArrayList<>(Arrays.asList(textArea.getText().split(",")));
     }
+
+    @Override 
+    public ArrayList<String> ordenaAZ(ArrayList<String> nomes) {
+        Collections.sort(nomes);
+        return nomes;
+    }
+
+    @Override 
+    public ArrayList<String> ordenaZA(ArrayList<String> nomes) {
+        Collections.reverse(nomes);;
+        return nomes;
+    }
+
+    @Override
+    public ArrayList<String> inverter(ArrayList<String> nomes) {
+        Collections.swap(nomes, 0, nomes.size() - 1);
+        return nomes;
+    }
+    
 }
