@@ -5,13 +5,19 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+
 import java.awt.Font;
+import java.awt.Cursor;
 
 import utils.IMetodosOrdenacao;
 
@@ -19,8 +25,11 @@ import utils.IMetodosOrdenacao;
 public class TelaArray extends JFrame implements IMetodosOrdenacao {
 
     private Font font = new Font(Font.SANS_SERIF, Font.BOLD, 13);
+    private Font fontTextArea = new Font(Font.SANS_SERIF, Font.PLAIN, 13);
     private Color background = new Color(242, 242, 242);
-    private Color foreground = new Color(111, 20, 149);
+    private Color foreground = new Color(148, 24, 129);
+    private Color corComplementar = new Color(153, 224, 130);
+    private Cursor cursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
 
     private JTextArea textArea;
     private JButton btnAZ;
@@ -35,23 +44,26 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
 
     public TelaArray() {
         setSize(700, 500);
-        setTitle("Tela de Vetor");
+        setTitle("Ordenação com Collections");
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setBackground(background);
         criarComponentes();
         setVisible(true);
     }
 
     private void criarComponentes() {
-        JLabel labelAviso = new JLabel();
-        labelAviso.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-        labelAviso.setText("Dica: Separe as palavras por vírgula!");
-        labelAviso.setBounds(10, 10, 300, 15);
-        getContentPane().add(labelAviso);
+        JLabel labelDica = new JLabel();
+        labelDica.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+        labelDica.setText("Dica: Separe as palavras por vírgula!");
+        labelDica.setBounds(10, 10, 300, 15);
+        getContentPane().add(labelDica);
 
         textArea = new JTextArea();
-        textArea.setBounds(10, 30, 350, 440);
+        textArea.setBounds(10, 30, 350, 420);
         textArea.setBorder(BorderFactory.createTitledBorder("Digite aqui"));
+        textArea.setFont(fontTextArea);
+        textArea.setBackground(background);
         getContentPane().add(textArea);
 
         acoesBotoes();
@@ -61,33 +73,90 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnAZ.setText("Ordenar A-Z");
         btnAZ.setBackground(background);
         btnAZ.setForeground(foreground);      
-        btnAZ.setBorder(BorderFactory.createLineBorder(foreground, 2));
+        btnAZ.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
+        btnAZ.setFocusable(false);
         getContentPane().add(btnAZ);
 
         btnZA.setBounds(400, 50, 250, 30);
+        btnZA.setFont(font);
+        btnZA.setText("Ordenar Z-A");
+        btnZA.setBackground(background);
+        btnZA.setForeground(foreground);      
+        btnZA.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnZA.setCursor(cursor);
+        btnZA.setFocusable(false);
         getContentPane().add(btnZA);
 
         btnInverter.setBounds(400, 90, 250, 30);
+        btnInverter.setFont(font);
+        btnInverter.setText("Inverter");
+        btnInverter.setBackground(background);
+        btnInverter.setForeground(foreground);      
+        btnInverter.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnInverter.setCursor(cursor);
+        btnInverter.setFocusable(false);
         getContentPane().add(btnInverter);
 
         btnRemoverDuplicados.setBounds(400, 150, 250, 30);
+        btnRemoverDuplicados.setFont(font);
+        btnRemoverDuplicados.setText("Remover Duplicados");
+        btnRemoverDuplicados.setBackground(background);
+        btnRemoverDuplicados.setForeground(foreground);      
+        btnRemoverDuplicados.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnRemoverDuplicados.setCursor(cursor);
+        btnRemoverDuplicados.setFocusable(false);
         getContentPane().add(btnRemoverDuplicados);
 
         btnRemoverVazios.setBounds(400, 190, 250, 30);
+        btnRemoverVazios.setFont(font);
+        btnRemoverVazios.setText("Remover Vazios");
+        btnRemoverVazios.setBackground(background);
+        btnRemoverVazios.setForeground(foreground);      
+        btnRemoverVazios.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnRemoverVazios.setCursor(cursor);
+        btnRemoverVazios.setFocusable(false);
         getContentPane().add(btnRemoverVazios);
 
         btnAplicarTrim.setBounds(400, 230, 250, 30);
+        btnAplicarTrim.setFont(font);
+        btnAplicarTrim.setText("Aplicar Trim");
+        btnAplicarTrim.setBackground(background);
+        btnAplicarTrim.setForeground(foreground);      
+        btnAplicarTrim.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAplicarTrim.setCursor(cursor);
+        btnAplicarTrim.setFocusable(false);
         getContentPane().add(btnAplicarTrim);
 
         btnConverterMaiusculo.setBounds(400, 290, 250, 30);
+        btnConverterMaiusculo.setFont(font);
+        btnConverterMaiusculo.setText("Converter para Maiúsculo");
+        btnConverterMaiusculo.setBackground(background);
+        btnConverterMaiusculo.setForeground(foreground);      
+        btnConverterMaiusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnConverterMaiusculo.setCursor(cursor);
+        btnConverterMaiusculo.setFocusable(false);
         getContentPane().add(btnConverterMaiusculo);
 
         btnConverterMinusculo.setBounds(400, 330, 250, 30);
+        btnConverterMinusculo.setFont(font);
+        btnConverterMinusculo.setText("Converter para Minúsculo");
+        btnConverterMinusculo.setBackground(background);
+        btnConverterMinusculo.setForeground(foreground);      
+        btnConverterMinusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnConverterMinusculo.setCursor(cursor);
+        btnConverterMinusculo.setFocusable(false);
         getContentPane().add(btnConverterMinusculo);
 
         btnConverterCapitalizar.setBounds(400, 370, 250, 30);
+        btnConverterCapitalizar.setFont(font);
+        btnConverterCapitalizar.setText("Capitalizar");
+        btnConverterCapitalizar.setBackground(background);
+        btnConverterCapitalizar.setForeground(foreground);      
+        btnConverterCapitalizar.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnConverterCapitalizar.setCursor(cursor);
+        btnConverterCapitalizar.setFocusable(false);
         getContentPane().add(btnConverterCapitalizar);
-
     }
 
     private void acoesBotoes() {
@@ -99,7 +168,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
             }
         });
 
-        btnZA = new JButton(new AbstractAction("Ordenar de Z-A") {
+        btnZA = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> nomesOrdenadosZA = ordenaZA(getListaNomes());
@@ -108,7 +177,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
             }
         });
 
-        btnInverter = new JButton(new AbstractAction("Inverter") {
+        btnInverter = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> nomesInvertidos = inverter(getListaNomes());
@@ -116,45 +185,48 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
             }
         });
 
-        btnRemoverDuplicados = new JButton(new AbstractAction("Remover Duplicados") {
+        btnRemoverDuplicados = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                ArrayList<String> nomesSemDuplicatas = removerDuplicados(getListaNomes());
+                textArea.setText(String.join(",", nomesSemDuplicatas));
             }
         });
 
-        btnRemoverVazios = new JButton(new AbstractAction("Remover Vazios") {
+        btnRemoverVazios = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            
+                ArrayList<String> nomesVaziosRemovidos = removerVazios(getListaNomes());
+                textArea.setText(String.join(",", nomesVaziosRemovidos));
             }
         });
 
-        btnAplicarTrim = new JButton(new AbstractAction("Aplicar Trim") {
+        btnAplicarTrim = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                ArrayList<String> nomesComTrim = aplicarTrim(getListaNomes());
+                textArea.setText(String.join(",", nomesComTrim));
             }
         });
 
-        btnConverterMaiusculo = new JButton(new AbstractAction("Converter maiúsculo") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                
-            }
-        });
-
-        btnConverterMinusculo = new JButton(new AbstractAction("Converter minúsculo") {
+        btnConverterMaiusculo = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 
             }
+        });
+
+        btnConverterMinusculo = new JButton(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
             
         });
 
-        btnConverterCapitalizar = new JButton(new AbstractAction("Converter capitalizar") {
+        btnConverterCapitalizar = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
@@ -184,5 +256,32 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         Collections.swap(nomes, 0, nomes.size() - 1);
         return nomes;
     }
-    
+
+    @Override
+    public ArrayList<String> removerDuplicados(ArrayList<String> nomes) {
+        return (ArrayList<String>) nomes.stream()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public ArrayList<String> removerVazios(ArrayList<String> nomes) {
+        if (nomes.contains("")){
+            nomes.removeAll(nomes.stream()
+                .filter(n -> n.equals(""))
+                .collect(Collectors.toList()));
+        }
+
+        return nomes;
+    }
+
+    @Override
+    public ArrayList<String> aplicarTrim(ArrayList<String> nomes) {
+        //arrumar jeito que nao seja gambiarra
+        ArrayList<String> nomesComTrim = new ArrayList<>();
+
+        nomes.forEach(nome -> nomesComTrim.add(" " + nome + " "));
+
+        return nomesComTrim;
+    }
 }
