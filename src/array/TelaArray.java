@@ -5,16 +5,16 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 import java.awt.Font;
 import java.awt.Cursor;
@@ -43,11 +43,10 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
     private JButton btnConverterCapitalizar;
 
     public TelaArray() {
-        setSize(700, 500);
+        setSize(700, 455);
         setTitle("Ordenação com Collections");
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setBackground(background);
         criarComponentes();
         setVisible(true);
     }
@@ -60,10 +59,19 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         getContentPane().add(labelDica);
 
         textArea = new JTextArea();
-        textArea.setBounds(10, 30, 350, 420);
-        textArea.setBorder(BorderFactory.createTitledBorder("Digite aqui"));
+        textArea.setBounds(10, 30, 350, 372);
+
+        Border matteBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(227, 168, 2));
+        String titulo = "Digite aqui";
+        Border titledBorder = BorderFactory.createTitledBorder(matteBorder, titulo);
+        ((TitledBorder) titledBorder).setTitleColor(new Color(58, 93, 230));
+        ((TitledBorder) titledBorder).setTitleFont(font);
+        textArea.setBorder(titledBorder);
+
         textArea.setFont(fontTextArea);
         textArea.setBackground(background);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
         getContentPane().add(textArea);
 
         acoesBotoes();
@@ -247,7 +255,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
 
     @Override 
     public ArrayList<String> ordenaZA(ArrayList<String> nomes) {
-        Collections.reverse(nomes);;
+        Collections.sort(nomes, (n1, n2) -> n2.compareTo(n1));;
         return nomes;
     }
 
@@ -277,11 +285,9 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
 
     @Override
     public ArrayList<String> aplicarTrim(ArrayList<String> nomes) {
-        //arrumar jeito que nao seja gambiarra
-        ArrayList<String> nomesComTrim = new ArrayList<>();
-
-        nomes.forEach(nome -> nomesComTrim.add(" " + nome + " "));
-
-        return nomesComTrim;
+        return new ArrayList<String>(
+            nomes.stream()
+                .map(String::trim)
+                .collect(Collectors.toList()));
     }
 }
