@@ -298,5 +298,41 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
     public ArrayList<String> inverter(ArrayList<String> nomes) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'inverter'");
+    }
+
+    @Override
+    public ArrayList<String> removerDuplicados(ArrayList<String> nomes) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removerDuplicados'");
+    }
+
+    @Override
+    public ArrayList<String> removerVazios(ArrayList<String> nomes) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removerVazios'");
+    }
+
+    @Override
+    public ArrayList<String> aplicarTrim(ArrayList<String> nome) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'aplicarTrim'");
+    }
+
+    @Override
+    public ArrayList<String> maiusculo(ArrayList<String> nome) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'maiusculo'");
+    }
+
+    @Override
+    public ArrayList<String> minusculo(ArrayList<String> nome) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'minusculo'");
+    }
+
+    @Override
+    public ArrayList<String> capitalizar(ArrayList<String> nome) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'capitalizar'");
     }    
 }
