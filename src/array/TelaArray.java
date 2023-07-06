@@ -1,10 +1,13 @@
 package array;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import javax.swing.AbstractAction;
@@ -16,11 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
-import java.awt.Font;
-import java.awt.Cursor;
-
 import utils.IMetodosOrdenacao;
-
 
 public class TelaArray extends JFrame implements IMetodosOrdenacao {
 
@@ -61,7 +60,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         textArea = new JTextArea();
         textArea.setBounds(10, 30, 350, 372);
 
-        Border matteBorder = BorderFactory.createMatteBorder(2,2,2,2, new Color(227, 168, 2));
+        Border matteBorder = BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(227, 168, 2));
         String titulo = "Digite aqui";
         Border titledBorder = BorderFactory.createTitledBorder(matteBorder, titulo);
         ((TitledBorder) titledBorder).setTitleColor(new Color(58, 93, 230));
@@ -80,7 +79,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnAZ.setFont(font);
         btnAZ.setText("Ordenar A-Z");
         btnAZ.setBackground(background);
-        btnAZ.setForeground(foreground);      
+        btnAZ.setForeground(foreground);
         btnAZ.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         btnAZ.setFocusable(false);
@@ -90,7 +89,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnZA.setFont(font);
         btnZA.setText("Ordenar Z-A");
         btnZA.setBackground(background);
-        btnZA.setForeground(foreground);      
+        btnZA.setForeground(foreground);
         btnZA.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnZA.setCursor(cursor);
         btnZA.setFocusable(false);
@@ -100,7 +99,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnInverter.setFont(font);
         btnInverter.setText("Inverter");
         btnInverter.setBackground(background);
-        btnInverter.setForeground(foreground);      
+        btnInverter.setForeground(foreground);
         btnInverter.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnInverter.setCursor(cursor);
         btnInverter.setFocusable(false);
@@ -110,7 +109,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnRemoverDuplicados.setFont(font);
         btnRemoverDuplicados.setText("Remover Duplicados");
         btnRemoverDuplicados.setBackground(background);
-        btnRemoverDuplicados.setForeground(foreground);      
+        btnRemoverDuplicados.setForeground(foreground);
         btnRemoverDuplicados.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnRemoverDuplicados.setCursor(cursor);
         btnRemoverDuplicados.setFocusable(false);
@@ -120,7 +119,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnRemoverVazios.setFont(font);
         btnRemoverVazios.setText("Remover Vazios");
         btnRemoverVazios.setBackground(background);
-        btnRemoverVazios.setForeground(foreground);      
+        btnRemoverVazios.setForeground(foreground);
         btnRemoverVazios.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnRemoverVazios.setCursor(cursor);
         btnRemoverVazios.setFocusable(false);
@@ -130,7 +129,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnAplicarTrim.setFont(font);
         btnAplicarTrim.setText("Aplicar Trim");
         btnAplicarTrim.setBackground(background);
-        btnAplicarTrim.setForeground(foreground);      
+        btnAplicarTrim.setForeground(foreground);
         btnAplicarTrim.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAplicarTrim.setCursor(cursor);
         btnAplicarTrim.setFocusable(false);
@@ -140,7 +139,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnConverterMaiusculo.setFont(font);
         btnConverterMaiusculo.setText("Converter para Maiúsculo");
         btnConverterMaiusculo.setBackground(background);
-        btnConverterMaiusculo.setForeground(foreground);      
+        btnConverterMaiusculo.setForeground(foreground);
         btnConverterMaiusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnConverterMaiusculo.setCursor(cursor);
         btnConverterMaiusculo.setFocusable(false);
@@ -150,7 +149,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnConverterMinusculo.setFont(font);
         btnConverterMinusculo.setText("Converter para Minúsculo");
         btnConverterMinusculo.setBackground(background);
-        btnConverterMinusculo.setForeground(foreground);      
+        btnConverterMinusculo.setForeground(foreground);
         btnConverterMinusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnConverterMinusculo.setCursor(cursor);
         btnConverterMinusculo.setFocusable(false);
@@ -160,7 +159,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnConverterCapitalizar.setFont(font);
         btnConverterCapitalizar.setText("Capitalizar");
         btnConverterCapitalizar.setBackground(background);
-        btnConverterCapitalizar.setForeground(foreground);      
+        btnConverterCapitalizar.setForeground(foreground);
         btnConverterCapitalizar.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnConverterCapitalizar.setCursor(cursor);
         btnConverterCapitalizar.setFocusable(false);
@@ -181,7 +180,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> nomesOrdenadosZA = ordenaZA(getListaNomes());
                 textArea.setText(String.join(",", nomesOrdenadosZA));
-            
+
             }
         });
 
@@ -220,25 +219,28 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnConverterMaiusculo = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                
+                ArrayList<String> nomesMaiusculo = maiusculo(getListaNomes());
+                textArea.setText(String.join(",", nomesMaiusculo));
+
             }
         });
 
         btnConverterMinusculo = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                
+                ArrayList<String> nomesMinusculo = minusculo(getListaNomes());
+                textArea.setText(String.join(",", nomesMinusculo));
+
             }
-            
+
         });
 
         btnConverterCapitalizar = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                
+                ArrayList<String> capitalize = capitalizar(getListaNomes());
+                textArea.setText(String.join(",", capitalize));
+
             }
         });
     }
@@ -247,15 +249,16 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         return new ArrayList<>(Arrays.asList(textArea.getText().split(",")));
     }
 
-    @Override 
+    @Override
     public ArrayList<String> ordenaAZ(ArrayList<String> nomes) {
         Collections.sort(nomes);
         return nomes;
     }
 
-    @Override 
+    @Override
     public ArrayList<String> ordenaZA(ArrayList<String> nomes) {
-        Collections.sort(nomes, (n1, n2) -> n2.compareTo(n1));;
+        Collections.sort(nomes, (n1, n2) -> n2.compareTo(n1));
+        ;
         return nomes;
     }
 
@@ -274,10 +277,10 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
 
     @Override
     public ArrayList<String> removerVazios(ArrayList<String> nomes) {
-        if (nomes.contains("")){
+        if (nomes.contains("")) {
             nomes.removeAll(nomes.stream()
-                .filter(n -> n.equals(""))
-                .collect(Collectors.toList()));
+                    .filter(n -> n.equals(""))
+                    .collect(Collectors.toList()));
         }
 
         return nomes;
@@ -286,8 +289,37 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
     @Override
     public ArrayList<String> aplicarTrim(ArrayList<String> nomes) {
         return new ArrayList<String>(
-            nomes.stream()
-                .map(String::trim)
-                .collect(Collectors.toList()));
+                nomes.stream()
+                        .map(String::trim)
+                        .collect(Collectors.toList()));
     }
+
+    @Override
+    public ArrayList<String> maiusculo(ArrayList<String> nomes) {
+        for (String nome : nomes) {
+            String newValue = nome.toUpperCase(Locale.ROOT);
+            nomes.set(nomes.indexOf(nome), newValue);
+        }
+
+        System.out.println(nomes);
+        return nomes;
+    }
+
+    @Override
+    public ArrayList<String> minusculo(ArrayList<String> nomes) {
+        for (String nome : nomes) {
+            String newValue = nome.toLowerCase(Locale.ROOT);
+            nomes.set(nomes.indexOf(nome), newValue);
+        }
+
+        System.out.println(nomes);
+        return nomes;
+    }
+
+    @Override
+    public ArrayList<String> capitalizar(ArrayList<String> nomes) {
+
+        return nomes;
+    }
+
 }

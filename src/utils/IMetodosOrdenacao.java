@@ -15,4 +15,10 @@ public interface IMetodosOrdenacao {
     ArrayList<String> removerVazios(ArrayList<String> nomes);
 
     ArrayList<String> aplicarTrim(ArrayList<String> nome);
+
+    ArrayList<String> maiusculo(ArrayList<String> nome);
+
+    ArrayList<String> minusculo(ArrayList<String> nome);
+
+    ArrayList<String> capitalizar(ArrayList<String> nome);
 }
