@@ -84,7 +84,7 @@ public class TelaVetor extends JFrame {
         btnZA.setBackground(background);
         btnZA.setForeground(foreground);      
         btnZA.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnZA.setCursor(cursor);
         getContentPane().add(btnZA);
 
         btnInverter.setBounds(400, 90, 250, 30);
@@ -93,7 +93,7 @@ public class TelaVetor extends JFrame {
         btnInverter.setBackground(background);
         btnInverter.setForeground(foreground);      
         btnInverter.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnInverter.setCursor(cursor);
         getContentPane().add(btnInverter);
 
         btnRemoverDuplicados.setBounds(400, 150, 250, 30);
@@ -102,7 +102,7 @@ public class TelaVetor extends JFrame {
         btnRemoverDuplicados.setBackground(background);
         btnRemoverDuplicados.setForeground(foreground);      
         btnRemoverDuplicados.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnRemoverDuplicados.setCursor(cursor);
         getContentPane().add(btnRemoverDuplicados);
 
         btnRemoverVazios.setBounds(400, 190, 250, 30);
@@ -111,7 +111,7 @@ public class TelaVetor extends JFrame {
         btnRemoverVazios.setBackground(background);
         btnRemoverVazios.setForeground(foreground);      
         btnRemoverVazios.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnRemoverVazios.setCursor(cursor);
         getContentPane().add(btnRemoverVazios);
 
         btnAplicarTrim.setBounds(400, 230, 250, 30);
@@ -120,7 +120,7 @@ public class TelaVetor extends JFrame {
         btnAplicarTrim.setBackground(background);
         btnAplicarTrim.setForeground(foreground);      
         btnAplicarTrim.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnAplicarTrim.setCursor(cursor);
         getContentPane().add(btnAplicarTrim);
 
         btnConverterMaiusculo.setBounds(400, 290, 250, 30);
@@ -129,7 +129,7 @@ public class TelaVetor extends JFrame {
         btnConverterMaiusculo.setBackground(background);
         btnConverterMaiusculo.setForeground(foreground);      
         btnConverterMaiusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnConverterMaiusculo.setCursor(cursor);
         getContentPane().add(btnConverterMaiusculo);
 
         btnConverterMinusculo.setBounds(400, 330, 250, 30);
@@ -138,7 +138,7 @@ public class TelaVetor extends JFrame {
         btnConverterMinusculo.setBackground(background);
         btnConverterMinusculo.setForeground(foreground);      
         btnConverterMinusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnConverterMinusculo.setCursor(cursor);
         getContentPane().add(btnConverterMinusculo);
 
         btnConverterCapitalizar.setBounds(400, 370, 250, 30);
@@ -147,7 +147,7 @@ public class TelaVetor extends JFrame {
         btnConverterCapitalizar.setBackground(background);
         btnConverterCapitalizar.setForeground(foreground);      
         btnConverterCapitalizar.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
-        btnAZ.setCursor(cursor);
+        btnConverterCapitalizar.setCursor(cursor);
         getContentPane().add(btnConverterCapitalizar);
 
     }
