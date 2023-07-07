@@ -1,21 +1,22 @@
 package vetor;
 
-import java.awt.Cursor;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import java.awt.Font;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 import utils.IMetodosOrdenacao;
 import vetor.Classes.Funcoes;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 
 public class TelaVetor extends JFrame implements IMetodosOrdenacao {
 
@@ -62,7 +63,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         ((TitledBorder) titledBorder).setTitleFont(font);
 
         textArea.setBounds(10, 30, 350, 372);
-        textArea.setFont(fontTextArea);        
+        textArea.setFont(fontTextArea);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setBorder(titledBorder);
@@ -74,7 +75,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnAZ.setFont(font);
         btnAZ.setText("Ordenar A-Z");
         btnAZ.setBackground(background);
-        btnAZ.setForeground(foreground);      
+        btnAZ.setForeground(foreground);
         btnAZ.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnAZ);
@@ -83,7 +84,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnZA.setFont(font);
         btnZA.setText("Ordenar Z-A");
         btnZA.setBackground(background);
-        btnZA.setForeground(foreground);      
+        btnZA.setForeground(foreground);
         btnZA.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnZA);
@@ -92,7 +93,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnInverter.setFont(font);
         btnInverter.setText("Inverter");
         btnInverter.setBackground(background);
-        btnInverter.setForeground(foreground);      
+        btnInverter.setForeground(foreground);
         btnInverter.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnInverter);
@@ -101,7 +102,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnRemoverDuplicados.setFont(font);
         btnRemoverDuplicados.setText("Remover Duplicados");
         btnRemoverDuplicados.setBackground(background);
-        btnRemoverDuplicados.setForeground(foreground);      
+        btnRemoverDuplicados.setForeground(foreground);
         btnRemoverDuplicados.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnRemoverDuplicados);
@@ -110,7 +111,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnRemoverVazios.setFont(font);
         btnRemoverVazios.setText("Remover Vazios");
         btnRemoverVazios.setBackground(background);
-        btnRemoverVazios.setForeground(foreground);      
+        btnRemoverVazios.setForeground(foreground);
         btnRemoverVazios.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnRemoverVazios);
@@ -119,7 +120,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnAplicarTrim.setFont(font);
         btnAplicarTrim.setText("Aplicar Trim");
         btnAplicarTrim.setBackground(background);
-        btnAplicarTrim.setForeground(foreground);      
+        btnAplicarTrim.setForeground(foreground);
         btnAplicarTrim.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnAplicarTrim);
@@ -128,7 +129,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnConverterMaiusculo.setFont(font);
         btnConverterMaiusculo.setText("Converter maiúsculo");
         btnConverterMaiusculo.setBackground(background);
-        btnConverterMaiusculo.setForeground(foreground);      
+        btnConverterMaiusculo.setForeground(foreground);
         btnConverterMaiusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnConverterMaiusculo);
@@ -137,7 +138,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnConverterMinusculo.setFont(font);
         btnConverterMinusculo.setText("Converter minúsculo");
         btnConverterMinusculo.setBackground(background);
-        btnConverterMinusculo.setForeground(foreground);      
+        btnConverterMinusculo.setForeground(foreground);
         btnConverterMinusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnConverterMinusculo);
@@ -146,7 +147,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnConverterCapitalizar.setFont(font);
         btnConverterCapitalizar.setText("Converter capitalizar");
         btnConverterCapitalizar.setBackground(background);
-        btnConverterCapitalizar.setForeground(foreground);      
+        btnConverterCapitalizar.setForeground(foreground);
         btnConverterCapitalizar.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnConverterCapitalizar);
@@ -157,20 +158,20 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
         btnAZ = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    String texto = textArea.getText();
-                    arlNomes = texto.split("\n");
-    
-                    arlNomes = Funcoes.OrdenaAZ(arlNomes);
-    
-                    StringBuilder resultado = new StringBuilder();
+                String texto = textArea.getText();
+                arlNomes = texto.split("\n");
 
-                    for (String s : arlNomes) {
-                        System.out.println(s);
-                        resultado.append(s).append("\n");
-                    }
-                    textArea.setText(resultado.toString());
-    
-            getContentPane().add(btnAZ);  
+                arlNomes = Funcoes.OrdenaAZ(arlNomes);
+
+                StringBuilder resultado = new StringBuilder();
+
+                for (String s : arlNomes) {
+                    System.out.println(s);
+                    resultado.append(s).append("\n");
+                }
+                textArea.setText(resultado.toString());
+
+                getContentPane().add(btnAZ);
             }
         });
 
@@ -201,7 +202,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
                 for (String s : Invertido) {
                     resultado.append(s).append("\n");
                 }
-                
+
                 textArea.setText(resultado.toString());
             }
         });
@@ -254,7 +255,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
                 System.out.println("Resultado: " + resultado);
 
                 textArea.setText(resultado.toString());
-            }            
+            }
         });
 
         btnConverterMaiusculo = new JButton(new AbstractAction("Converter maiúsculo") {
@@ -285,7 +286,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
 
                 textArea.setText(resultado.toString());
             }
-            
+
         });
 
         btnConverterCapitalizar = new JButton(new AbstractAction("Converter capitalizar") {
@@ -356,5 +357,5 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
     public ArrayList<String> capitalizar(ArrayList<String> nome) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'capitalizar'");
-    }    
+    }
 }

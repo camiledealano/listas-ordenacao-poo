@@ -238,7 +238,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnConverterCapitalizar = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<String> capitalize = capitalizar(getListaNomes());
+                ArrayList<String> capitalize = capitalizados(getListaNomes());
                 textArea.setText(String.join(",", capitalize));
 
             }
@@ -315,9 +315,16 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
     }
 
     @Override
-    public ArrayList<String> capitalizar(ArrayList<String> nomes) {
+    public ArrayList<String> capitalize(ArrayList<String> nomes) {
+        ArrayList<String> capitalizados = (ArrayList<String>) nomes.stream()
+                .map(nome -> {
+                    String caracterMaiusculo = nome.substring(0, 1).toUpperCase();
+                    String restanteNome = nome.substring(1);
+                    return caracterMaiusculo + restanteNome;
+                })
+                .collect(Collectors.toList());
 
+        System.out.println(capitalizados);
         return nomes;
     }
-
 }
