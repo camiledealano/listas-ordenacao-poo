@@ -20,7 +20,5 @@ public interface IMetodosOrdenacao {
 
     ArrayList<String> converterMinusculo(ArrayList<String> nome);
 
-    ArrayList<String> capitalize(ArrayList<String> nomes);
-
-    ArrayList<String> capitalizados(ArrayList<String> nomes);
+    ArrayList<String> capitalizar(ArrayList<String> nomes);
 }

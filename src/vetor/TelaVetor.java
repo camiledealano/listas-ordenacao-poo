@@ -1,24 +1,19 @@
 package vetor;
 
-import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Font;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
-<<<<<<< HEAD
-import java.util.ArrayList;
-
-=======
->>>>>>> 2950138b4aefc78461f9381022b7703259ef22f3
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+import java.awt.Font;
 
 import vetor.Classes.Funcoes;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 public class TelaVetor extends JFrame {
 
@@ -66,7 +61,7 @@ public class TelaVetor extends JFrame {
         ((TitledBorder) titledBorder).setTitleFont(font);
 
         textArea.setBounds(10, 30, 350, 372);
-        textArea.setFont(fontTextArea);
+        textArea.setFont(fontTextArea);        
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setBorder(titledBorder);
@@ -78,7 +73,7 @@ public class TelaVetor extends JFrame {
         btnAZ.setFont(font);
         btnAZ.setText("Ordenar A-Z");
         btnAZ.setBackground(background);
-        btnAZ.setForeground(foreground);
+        btnAZ.setForeground(foreground);      
         btnAZ.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAZ.setCursor(cursor);
         getContentPane().add(btnAZ);
@@ -87,7 +82,7 @@ public class TelaVetor extends JFrame {
         btnZA.setFont(font);
         btnZA.setText("Ordenar Z-A");
         btnZA.setBackground(background);
-        btnZA.setForeground(foreground);
+        btnZA.setForeground(foreground);      
         btnZA.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnZA.setCursor(cursor);
         getContentPane().add(btnZA);
@@ -96,7 +91,7 @@ public class TelaVetor extends JFrame {
         btnInverter.setFont(font);
         btnInverter.setText("Inverter");
         btnInverter.setBackground(background);
-        btnInverter.setForeground(foreground);
+        btnInverter.setForeground(foreground);      
         btnInverter.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnInverter.setCursor(cursor);
         getContentPane().add(btnInverter);
@@ -105,7 +100,7 @@ public class TelaVetor extends JFrame {
         btnRemoverDuplicados.setFont(font);
         btnRemoverDuplicados.setText("Remover Duplicados");
         btnRemoverDuplicados.setBackground(background);
-        btnRemoverDuplicados.setForeground(foreground);
+        btnRemoverDuplicados.setForeground(foreground);      
         btnRemoverDuplicados.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnRemoverDuplicados.setCursor(cursor);
         getContentPane().add(btnRemoverDuplicados);
@@ -114,7 +109,7 @@ public class TelaVetor extends JFrame {
         btnRemoverVazios.setFont(font);
         btnRemoverVazios.setText("Remover Vazios");
         btnRemoverVazios.setBackground(background);
-        btnRemoverVazios.setForeground(foreground);
+        btnRemoverVazios.setForeground(foreground);      
         btnRemoverVazios.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnRemoverVazios.setCursor(cursor);
         getContentPane().add(btnRemoverVazios);
@@ -123,7 +118,7 @@ public class TelaVetor extends JFrame {
         btnAplicarTrim.setFont(font);
         btnAplicarTrim.setText("Aplicar Trim");
         btnAplicarTrim.setBackground(background);
-        btnAplicarTrim.setForeground(foreground);
+        btnAplicarTrim.setForeground(foreground);      
         btnAplicarTrim.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnAplicarTrim.setCursor(cursor);
         getContentPane().add(btnAplicarTrim);
@@ -132,7 +127,7 @@ public class TelaVetor extends JFrame {
         btnConverterMaiusculo.setFont(font);
         btnConverterMaiusculo.setText("Converter maiúsculo");
         btnConverterMaiusculo.setBackground(background);
-        btnConverterMaiusculo.setForeground(foreground);
+        btnConverterMaiusculo.setForeground(foreground);      
         btnConverterMaiusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnConverterMaiusculo.setCursor(cursor);
         getContentPane().add(btnConverterMaiusculo);
@@ -141,7 +136,7 @@ public class TelaVetor extends JFrame {
         btnConverterMinusculo.setFont(font);
         btnConverterMinusculo.setText("Converter minúsculo");
         btnConverterMinusculo.setBackground(background);
-        btnConverterMinusculo.setForeground(foreground);
+        btnConverterMinusculo.setForeground(foreground);      
         btnConverterMinusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnConverterMinusculo.setCursor(cursor);
         getContentPane().add(btnConverterMinusculo);
@@ -150,7 +145,7 @@ public class TelaVetor extends JFrame {
         btnConverterCapitalizar.setFont(font);
         btnConverterCapitalizar.setText("Converter capitalizar");
         btnConverterCapitalizar.setBackground(background);
-        btnConverterCapitalizar.setForeground(foreground);
+        btnConverterCapitalizar.setForeground(foreground);      
         btnConverterCapitalizar.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
         btnConverterCapitalizar.setCursor(cursor);
         getContentPane().add(btnConverterCapitalizar);
@@ -161,28 +156,19 @@ public class TelaVetor extends JFrame {
         btnAZ = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-                String texto = textArea.getText();
-                arlNomes = texto.split("\n");
-=======
                     String texto = textArea.getText();
                     arlNomes = texto.split("\n");
                     arlNomes = funcoes.OrdenaAZ(arlNomes);
     
                     StringBuilder resultado = new StringBuilder();
->>>>>>> 2950138b4aefc78461f9381022b7703259ef22f3
 
-                arlNomes = Funcoes.OrdenaAZ(arlNomes);
-
-                StringBuilder resultado = new StringBuilder();
-
-                for (String s : arlNomes) {
-                    System.out.println(s);
-                    resultado.append(s).append("\n");
-                }
-                textArea.setText(resultado.toString());
-
-                getContentPane().add(btnAZ);
+                    for (String s : arlNomes) {
+                        System.out.println(s);
+                        resultado.append(s).append("\n");
+                    }
+                    textArea.setText(resultado.toString());
+    
+            getContentPane().add(btnAZ);  
             }
         });
 
@@ -213,7 +199,7 @@ public class TelaVetor extends JFrame {
                 for (String s : Invertido) {
                     resultado.append(s).append("\n");
                 }
-
+                
                 textArea.setText(resultado.toString());
             }
         });
@@ -265,7 +251,7 @@ public class TelaVetor extends JFrame {
                 }
 
                 textArea.setText(resultado.toString());
-            }
+            }            
         });
 
         btnConverterMaiusculo = new JButton(new AbstractAction("Converter maiúsculo") {
@@ -296,7 +282,7 @@ public class TelaVetor extends JFrame {
 
                 textArea.setText(resultado.toString());
             }
-
+            
         });
 
         btnConverterCapitalizar = new JButton(new AbstractAction("Converter capitalizar") {
@@ -314,61 +300,4 @@ public class TelaVetor extends JFrame {
             }
         });
     }
-<<<<<<< HEAD
-
-    @Override
-    public ArrayList<String> ordenaAZ(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ordenaAZ'");
-    }
-
-    @Override
-    public ArrayList<String> ordenaZA(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ordenaZA'");
-    }
-
-    @Override
-    public ArrayList<String> inverter(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'inverter'");
-    }
-
-    @Override
-    public ArrayList<String> removerDuplicados(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removerDuplicados'");
-    }
-
-    @Override
-    public ArrayList<String> removerVazios(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removerVazios'");
-    }
-
-    @Override
-    public ArrayList<String> aplicarTrim(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'aplicarTrim'");
-    }
-
-    @Override
-    public ArrayList<String> converterMaiusculo(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'maiusculo'");
-    }
-
-    @Override
-    public ArrayList<String> converterMinusculo(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'minusculo'");
-    }
-
-    @Override
-    public ArrayList<String> capitalizar(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'capitalizar'");
-    }
-=======
->>>>>>> 2950138b4aefc78461f9381022b7703259ef22f3
 }
