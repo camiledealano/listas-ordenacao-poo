@@ -3,7 +3,6 @@ package vetor;
 import java.awt.Cursor;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -12,13 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import java.awt.Font;
 
-import utils.IMetodosOrdenacao;
 import vetor.Classes.Funcoes;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
-public class TelaVetor extends JFrame implements IMetodosOrdenacao {
+public class TelaVetor extends JFrame {
 
+    Funcoes funcoes = new Funcoes();
     private Font font = new Font(Font.SANS_SERIF, Font.BOLD, 13);
     private Font fontTextArea = new Font(Font.SANS_SERIF, Font.PLAIN, 13);
     private Color background = new Color(242, 242, 242);
@@ -159,8 +158,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                     String texto = textArea.getText();
                     arlNomes = texto.split("\n");
-    
-                    arlNomes = Funcoes.OrdenaAZ(arlNomes);
+                    arlNomes = funcoes.OrdenaAZ(arlNomes);
     
                     StringBuilder resultado = new StringBuilder();
 
@@ -179,7 +177,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
                 arlNomes = texto.split("\n");
-                arlNomes = Funcoes.OrdenaZA(arlNomes);
+                arlNomes = funcoes.OrdenaZA(arlNomes);
 
                 StringBuilder resultado = new StringBuilder();
                 for (String s : arlNomes) {
@@ -195,7 +193,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
                 arlNomes = texto.split("\n");
-                String[] Invertido = Funcoes.Inverter(arlNomes);
+                String[] Invertido = funcoes.Inverter(arlNomes);
 
                 StringBuilder resultado = new StringBuilder();
                 for (String s : Invertido) {
@@ -211,7 +209,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
                 arlNomes = texto.split("\n");
-                String[] textoSemDuplicatas = Funcoes.removerDuplicatas(arlNomes);
+                String[] textoSemDuplicatas = funcoes.removerDuplicatas(arlNomes);
 
                 StringBuilder resultado = new StringBuilder();
                 for (String s : textoSemDuplicatas) {
@@ -227,7 +225,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
                 arlNomes = texto.split("\n");
-                String[] textoSemVazios = Funcoes.removerVazios(arlNomes);
+                String[] textoSemVazios = funcoes.removerVazios(arlNomes);
 
                 StringBuilder resultado = new StringBuilder();
                 for (String s : textoSemVazios) {
@@ -242,16 +240,15 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
-                arlNomes = texto.split(" ");
-                String[] textosSemEspaco = Funcoes.aplicarTrim(arlNomes);
+                arlNomes = texto.split("\n");
+                String[] textosSemEspaco = funcoes.aplicarTrim(arlNomes);
 
                 StringBuilder resultado = new StringBuilder();
                 textArea.setText(resultado.toString());
 
                 for (String s : textosSemEspaco) {
-                    resultado.append(s).append("");
+                    resultado.append(s).append("\n");
                 }
-                System.out.println("Resultado: " + resultado);
 
                 textArea.setText(resultado.toString());
             }            
@@ -262,7 +259,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
                 arlNomes = texto.split("\n");
-                String[] convertido = Funcoes.converterMaiusculo(arlNomes);
+                String[] convertido = funcoes.converterMaiusculo(arlNomes);
                 StringBuilder resultado = new StringBuilder();
                 for (String s : convertido) {
                     resultado.append(s).append("\n");
@@ -277,7 +274,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
                 arlNomes = texto.split("\n");
-                String[] convertido = Funcoes.converterMinusculo(arlNomes);
+                String[] convertido = funcoes.converterMinusculo(arlNomes);
                 StringBuilder resultado = new StringBuilder();
                 for (String s : convertido) {
                     resultado.append(s).append("\n");
@@ -293,7 +290,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             public void actionPerformed(ActionEvent e) {
                 String texto = textArea.getText();
                 arlNomes = texto.split("\n");
-                String[] convertido = Funcoes.capitalizar(arlNomes);
+                String[] convertido = funcoes.capitalizar(arlNomes);
                 StringBuilder resultado = new StringBuilder();
                 for (String s : convertido) {
                     resultado.append(s).append("\n");
@@ -303,58 +300,4 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
             }
         });
     }
-
-    @Override
-    public ArrayList<String> ordenaAZ(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ordenaAZ'");
-    }
-
-    @Override
-    public ArrayList<String> ordenaZA(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ordenaZA'");
-    }
-
-    @Override
-    public ArrayList<String> inverter(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'inverter'");
-    }
-
-    @Override
-    public ArrayList<String> removerDuplicados(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removerDuplicados'");
-    }
-
-    @Override
-    public ArrayList<String> removerVazios(ArrayList<String> nomes) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removerVazios'");
-    }
-
-    @Override
-    public ArrayList<String> aplicarTrim(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'aplicarTrim'");
-    }
-
-    @Override
-    public ArrayList<String> converterMaiusculo(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'maiusculo'");
-    }
-
-    @Override
-    public ArrayList<String> converterMinusculo(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'minusculo'");
-    }
-
-    @Override
-    public ArrayList<String> capitalizar(ArrayList<String> nome) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'capitalizar'");
-    }    
 }
