@@ -1,8 +1,10 @@
 package vetor.Classes;
 
-public class Funcoes{
+import utils.IMetodosOrdenacaoVetor;
 
-    public static String[] OrdenaAZ(String[] vetor){
+public class Funcoes implements IMetodosOrdenacaoVetor{
+
+    public String[] OrdenaAZ(String[] vetor){
             int n = vetor.length;
             for (int i = 0; i < n - 1; i++) {
                 for (int j = i + 1; j < n; j++) {
@@ -16,7 +18,7 @@ public class Funcoes{
             return vetor;
         }
 
-    public static String[] OrdenaZA(String[] vetor) {
+    public String[] OrdenaZA(String[] vetor) {
         int n = vetor.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
@@ -30,7 +32,7 @@ public class Funcoes{
         return vetor;
     }
 
-    public static String[] Inverter(String[] arlNomes) {
+    public String[] Inverter(String[] arlNomes) {
         String[] linhasInvertidas = new String[arlNomes.length];
 
         for (int i = 0; i < arlNomes.length; i++) {
@@ -39,7 +41,7 @@ public class Funcoes{
         return linhasInvertidas;
     }
 
-    public static String[] removerDuplicatas(String[] arlNomes) {
+    public String[] removerDuplicatas(String[] arlNomes) {
         int tamanhoSemDuplicatas = 0;
 
         for (int i = 0; i < arlNomes.length; i++) {
@@ -64,7 +66,7 @@ public class Funcoes{
         return linhasSemDuplicatas;
     }
 
-    public static String[] removerVazios(String[] arlNomes) {
+    public String[] removerVazios(String[] arlNomes) {
         int tamanho = arlNomes.length;
 
         for (String linha : arlNomes) {
@@ -84,19 +86,20 @@ public class Funcoes{
         return linhasSemVazios;
     }
     
-    public static String[] aplicarTrim(String[] arlNomes) {
+    public String[] aplicarTrim(String[] arlNomes) {
         String[] textosSemEspaco = new String[arlNomes.length];
     
         for (int i = 0; i < arlNomes.length; i++) {
-            if (arlNomes[i] != null) {
-                textosSemEspaco[i] = arlNomes[i].trim();
+            System.out.println(arlNomes[i]);
+            if (arlNomes[i] != "\n") {
+                textosSemEspaco[i] = arlNomes[i].replaceAll("\\s", "");
             }
         }
     
         return textosSemEspaco;
     }
 
-    public static String[] converterMaiusculo(String[] arlNomes) {
+    public String[] converterMaiusculo(String[] arlNomes) {
         String[] linhasMaiusculas = new String[arlNomes.length];
 
         for (int i = 0; i < arlNomes.length; i++) {
@@ -107,14 +110,12 @@ public class Funcoes{
                 caracteres[j] = Character.toUpperCase(caracteres[j]);
             }
             linhasMaiusculas[i] = new String(caracteres);
-        System.out.println(linhasMaiusculas[i]);
-
         }
 
         return linhasMaiusculas;
     }
 
-    public static String[] converterMinusculo(String[] arlNomes) {
+    public String[] converterMinusculo(String[] arlNomes) {
         String[] linhasMinusculas = new String[arlNomes.length];
 
         for (int i = 0; i < arlNomes.length; i++) {
@@ -130,7 +131,7 @@ public class Funcoes{
         return linhasMinusculas;
     }
 
-    public static String[] capitalizar(String[] arlNomes) {
+    public String[] capitalizar(String[] arlNomes) {
         String[] linhasCapitalizadas = new String[arlNomes.length];
         String espaco = "N";
         for (int i = 0; i < arlNomes.length; i++) {
