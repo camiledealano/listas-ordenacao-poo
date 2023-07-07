@@ -1,5 +1,6 @@
 package vetor;
 
+import java.awt.Cursor;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -13,14 +14,17 @@ import java.awt.Font;
 
 import utils.IMetodosOrdenacao;
 import vetor.Classes.Funcoes;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 public class TelaVetor extends JFrame implements IMetodosOrdenacao {
 
     private Font font = new Font(Font.SANS_SERIF, Font.BOLD, 13);
+    private Font fontTextArea = new Font(Font.SANS_SERIF, Font.PLAIN, 13);
     private Color background = new Color(242, 242, 242);
-    private Color foreground = new Color(111, 20, 149);
-    private Color foreground2 = new Color(132,71,255);
-    private Color foreground3 = new Color(255,51,116);
+    private Color foreground = new Color(148, 24, 129);
+    private Color corComplementar = new Color(153, 224, 130);
+    private Cursor cursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
 
     private JTextArea textArea;
     private JButton btnAZ;
@@ -35,8 +39,8 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
     private String[] arlNomes;
 
     public TelaVetor() {
-        setSize(700, 500);
-        setTitle("Tela de Vetor");
+        setSize(700, 455);
+        setTitle("Ordenação com Vetor");
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         criarComponentes();
@@ -46,87 +50,105 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
     private void criarComponentes() {
         JLabel labelAviso = new JLabel();
         labelAviso.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
-        labelAviso.setText("Dica: Separe as palavras por vírgula!");
+        labelAviso.setText("Dica: Separe as palavras por ENTER!");
         labelAviso.setBounds(10, 10, 300, 15);
         getContentPane().add(labelAviso);
 
         textArea = new JTextArea();
-        textArea.setBounds(10, 30, 350, 420);
-        textArea.setBorder(BorderFactory.createTitledBorder("Digite aqui"));
+
+        Border matteBorder = BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(227, 168, 2));
+        Border titledBorder = BorderFactory.createTitledBorder(matteBorder, "Digite aqui");
+        ((TitledBorder) titledBorder).setTitleColor(new Color(58, 93, 230));
+        ((TitledBorder) titledBorder).setTitleFont(font);
+
+        textArea.setBounds(10, 30, 350, 372);
+        textArea.setFont(fontTextArea);        
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setBorder(titledBorder);
         getContentPane().add(textArea);
 
         acoesBotoes();
 
-        btnAZ.setBounds(400, 30, 250, 30);
+        btnAZ.setBounds(400, 10, 250, 30);
         btnAZ.setFont(font);
         btnAZ.setText("Ordenar A-Z");
         btnAZ.setBackground(background);
         btnAZ.setForeground(foreground);      
-        btnAZ.setBorder(BorderFactory.createLineBorder(foreground, 2));
+        btnAZ.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnAZ);
 
-        btnZA.setBounds(400, 70, 250, 30);
+        btnZA.setBounds(400, 50, 250, 30);
         btnZA.setFont(font);
         btnZA.setText("Ordenar Z-A");
         btnZA.setBackground(background);
         btnZA.setForeground(foreground);      
-        btnZA.setBorder(BorderFactory.createLineBorder(foreground, 2));
+        btnZA.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnZA);
 
-        btnInverter.setBounds(400, 110, 250, 30);
+        btnInverter.setBounds(400, 90, 250, 30);
         btnInverter.setFont(font);
         btnInverter.setText("Inverter");
         btnInverter.setBackground(background);
         btnInverter.setForeground(foreground);      
-        btnInverter.setBorder(BorderFactory.createLineBorder(foreground, 2));
+        btnInverter.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnInverter);
 
-        btnRemoverDuplicados.setBounds(400, 170, 250, 30);
+        btnRemoverDuplicados.setBounds(400, 150, 250, 30);
         btnRemoverDuplicados.setFont(font);
         btnRemoverDuplicados.setText("Remover Duplicados");
         btnRemoverDuplicados.setBackground(background);
-        btnRemoverDuplicados.setForeground(foreground2);      
-        btnRemoverDuplicados.setBorder(BorderFactory.createLineBorder(foreground2, 2));
+        btnRemoverDuplicados.setForeground(foreground);      
+        btnRemoverDuplicados.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnRemoverDuplicados);
 
-        btnRemoverVazios.setBounds(400, 210, 250, 30);
+        btnRemoverVazios.setBounds(400, 190, 250, 30);
         btnRemoverVazios.setFont(font);
         btnRemoverVazios.setText("Remover Vazios");
         btnRemoverVazios.setBackground(background);
-        btnRemoverVazios.setForeground(foreground2);      
-        btnRemoverVazios.setBorder(BorderFactory.createLineBorder(foreground2, 2));
+        btnRemoverVazios.setForeground(foreground);      
+        btnRemoverVazios.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnRemoverVazios);
 
-        btnAplicarTrim.setBounds(400, 250, 250, 30);
+        btnAplicarTrim.setBounds(400, 230, 250, 30);
         btnAplicarTrim.setFont(font);
         btnAplicarTrim.setText("Aplicar Trim");
         btnAplicarTrim.setBackground(background);
-        btnAplicarTrim.setForeground(foreground2);      
-        btnAplicarTrim.setBorder(BorderFactory.createLineBorder(foreground2, 2));
+        btnAplicarTrim.setForeground(foreground);      
+        btnAplicarTrim.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnAplicarTrim);
 
-        btnConverterMaiusculo.setBounds(400, 310, 250, 30);
+        btnConverterMaiusculo.setBounds(400, 290, 250, 30);
         btnConverterMaiusculo.setFont(font);
         btnConverterMaiusculo.setText("Converter maiúsculo");
         btnConverterMaiusculo.setBackground(background);
-        btnConverterMaiusculo.setForeground(foreground3);      
-        btnConverterMaiusculo.setBorder(BorderFactory.createLineBorder(foreground3, 2));
+        btnConverterMaiusculo.setForeground(foreground);      
+        btnConverterMaiusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnConverterMaiusculo);
 
-        btnConverterMinusculo.setBounds(400, 350, 250, 30);
+        btnConverterMinusculo.setBounds(400, 330, 250, 30);
         btnConverterMinusculo.setFont(font);
         btnConverterMinusculo.setText("Converter minúsculo");
         btnConverterMinusculo.setBackground(background);
-        btnConverterMinusculo.setForeground(foreground3);      
-        btnConverterMinusculo.setBorder(BorderFactory.createLineBorder(foreground3, 2));
+        btnConverterMinusculo.setForeground(foreground);      
+        btnConverterMinusculo.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnConverterMinusculo);
 
-        btnConverterCapitalizar.setBounds(400, 390, 250, 30);
+        btnConverterCapitalizar.setBounds(400, 370, 250, 30);
         btnConverterCapitalizar.setFont(font);
         btnConverterCapitalizar.setText("Converter capitalizar");
         btnConverterCapitalizar.setBackground(background);
-        btnConverterCapitalizar.setForeground(foreground3);      
-        btnConverterCapitalizar.setBorder(BorderFactory.createLineBorder(foreground3, 2));
+        btnConverterCapitalizar.setForeground(foreground);      
+        btnConverterCapitalizar.setBorder(BorderFactory.createLineBorder(corComplementar, 2));
+        btnAZ.setCursor(cursor);
         getContentPane().add(btnConverterCapitalizar);
 
     }
