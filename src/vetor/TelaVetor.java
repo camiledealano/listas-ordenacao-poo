@@ -49,7 +49,7 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
 
     private void criarComponentes() {
         JLabel labelAviso = new JLabel();
-        labelAviso.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+        labelAviso.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 11));
         labelAviso.setText("Dica: Separe as palavras por ENTER!");
         labelAviso.setBounds(10, 10, 300, 15);
         getContentPane().add(labelAviso);
@@ -341,13 +341,13 @@ public class TelaVetor extends JFrame implements IMetodosOrdenacao {
     }
 
     @Override
-    public ArrayList<String> maiusculo(ArrayList<String> nome) {
+    public ArrayList<String> converterMaiusculo(ArrayList<String> nome) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'maiusculo'");
     }
 
     @Override
-    public ArrayList<String> minusculo(ArrayList<String> nome) {
+    public ArrayList<String> converterMinusculo(ArrayList<String> nome) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'minusculo'");
     }

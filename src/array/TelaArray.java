@@ -45,14 +45,14 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         setSize(700, 455);
         setTitle("Ordenação com Collections");
         setLayout(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         criarComponentes();
         setVisible(true);
     }
 
     private void criarComponentes() {
         JLabel labelDica = new JLabel();
-        labelDica.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 11));
+        labelDica.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 11));
         labelDica.setText("Dica: Separe as palavras por vírgula!");
         labelDica.setBounds(10, 10, 300, 15);
         getContentPane().add(labelDica);
@@ -219,7 +219,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnConverterMaiusculo = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<String> nomesMaiusculo = maiusculo(getListaNomes());
+                ArrayList<String> nomesMaiusculo = converterMaiusculo(getListaNomes());
                 textArea.setText(String.join(",", nomesMaiusculo));
 
             }
@@ -228,7 +228,7 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
         btnConverterMinusculo = new JButton(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<String> nomesMinusculo = minusculo(getListaNomes());
+                ArrayList<String> nomesMinusculo = converterMinusculo(getListaNomes());
                 textArea.setText(String.join(",", nomesMinusculo));
 
             }
@@ -295,24 +295,22 @@ public class TelaArray extends JFrame implements IMetodosOrdenacao {
     }
 
     @Override
-    public ArrayList<String> maiusculo(ArrayList<String> nomes) {
+    public ArrayList<String> converterMaiusculo(ArrayList<String> nomes) {
         for (String nome : nomes) {
             String newValue = nome.toUpperCase(Locale.ROOT);
             nomes.set(nomes.indexOf(nome), newValue);
         }
 
-        System.out.println(nomes);
         return nomes;
     }
 
     @Override
-    public ArrayList<String> minusculo(ArrayList<String> nomes) {
+    public ArrayList<String> converterMinusculo(ArrayList<String> nomes) {
         for (String nome : nomes) {
             String newValue = nome.toLowerCase(Locale.ROOT);
             nomes.set(nomes.indexOf(nome), newValue);
         }
 
-        System.out.println(nomes);
         return nomes;
     }
 
